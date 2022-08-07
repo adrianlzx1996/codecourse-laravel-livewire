@@ -23,7 +23,7 @@ class PostIndex extends Component
 
 	public function handlePostAdded ()
 	: void {
-		$this->postAdded = true;
+		session()->flash('message', 'Post added!');
 	}
 
     public function render()
