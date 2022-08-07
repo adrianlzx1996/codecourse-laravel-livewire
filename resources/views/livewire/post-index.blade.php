@@ -1,4 +1,9 @@
 <div>
+	@if($postAdded)
+		<div class="alert alert-success">
+			Post added successfully!
+		</div>
+	@endif
 	<livewire:post-create></livewire:post-create>
 
     @foreach($posts as $post)

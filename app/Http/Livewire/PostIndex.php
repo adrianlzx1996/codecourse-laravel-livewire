@@ -13,14 +13,17 @@ class PostIndex extends Component
 {
 	use WithPagination;
 
+	public $postAdded = false;
+
 	protected $paginationTheme = 'bootstrap';
 
 	protected $listeners = [
 		'postAdded' => 'handlePostAdded',
 	];
 
-	public function handlePostAdded ($postId)
+	public function handlePostAdded ()
 	: void {
+		$this->postAdded = true;
 	}
 
     public function render()
