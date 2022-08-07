@@ -8,9 +8,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    @livewire('hello')
-
-	                <livewire:hello></livewire:hello>
+	                <livewire:post-index></livewire:post-index>
                 </div>
             </div>
         </div>
