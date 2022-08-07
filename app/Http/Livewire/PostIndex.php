@@ -3,28 +3,29 @@
 namespace App\Http\Livewire;
 
 use App\Models\Post;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class PostIndex extends Component
 {
-	public $posts;
+	use WithPagination;
+
+	protected $paginationTheme = 'bootstrap';
 
 	protected $listeners = [
 		'postAdded' => 'handlePostAdded',
 	];
 
 	public function handlePostAdded ($postId)
-	{
-		$this->posts->prepend(Post::find($postId));
-	}
-
-	public function mount ()
-	{
-		$this->posts = Post::latest()->get();
+	: void {
 	}
 
     public function render()
-    {
-        return view('livewire.post-index');
+	: Factory|View|Application
+	{
+        return view('livewire.post-index', ['posts' => Post::latest()->paginate(10)]);
     }
 }
